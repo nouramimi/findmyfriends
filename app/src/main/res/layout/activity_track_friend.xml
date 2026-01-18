@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0FDF4"
+    tools:context=".TrackFriendActivity">
+
+    <!-- Header Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@android:color/white">
+
+            <!-- Back Button -->
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="← Retour"
+                android:textSize="14sp"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textColor="#047857"/>
+
+            <!-- Friend Name -->
+            <TextView
+                android:id="@+id/tv_friend_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tracking: Ami"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#064E3B"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Coordinates and Last Update -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@android:drawable/ic_dialog_map"
+                    app:tint="#10B981"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="6dp"/>
+
+                <TextView
+                    android:id="@+id/tv_coordinates"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Lat: 0.0, Lon: 0.0"
+                    android:textSize="13sp"
+                    android:textColor="#047857"/>
+
+                <TextView
+                    android:id="@+id/tv_last_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MAJ: --:--"
+                    android:textSize="11sp"
+                    android:textColor="#059669"/>
+            </LinearLayout>
+
+            <!-- Interval Selection Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:background="#ECFDF5"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Intervalle:"
+                    android:textSize="14sp"
+                    android:textColor="#065F46"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_interval"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="⏱ 1 min"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#047857"/>
+
+                <Button
+                    android:id="@+id/btn_change_interval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Modifier"
+                    android:textSize="12sp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="#10B981"
+                    android:textColor="#10B981"
+                    app:cornerRadius="20dp"/>
+            </LinearLayout>
+
+            <!-- Control Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <Button
+                    android:id="@+id/btn_start_stop_tracking"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="START"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#10B981"
+                    app:cornerRadius="8dp"
+                    app:icon="@android:drawable/ic_media_play"
+                    app:iconSize="20dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <Button
+                    android:id="@+id/btn_clear_history"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="EFFACER"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    app:icon="@android:drawable/ic_menu_delete"
+                    app:iconSize="20dp"
+                    app:strokeColor="#10B981"
+                    android:textColor="#10B981"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Map Fragment -->
+    <fragment
+        android:id="@+id/map_tracking"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="8dp"/>
+
+    <!-- Legend Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Légende:"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#064E3B"
+                android:layout_marginEnd="12dp"/>
+
+            <!-- Current Position -->
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/circle_background"
+                android:backgroundTint="#2196F3"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actuelle"
+                android:textSize="11sp"
+                android:textColor="#047857"
+                android:layout_marginEnd="12dp"/>
+
+            <!-- Previous Points -->
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/circle_background"
+                android:backgroundTint="#FF9800"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Historique"
+                android:textSize="11sp"
+                android:textColor="#047857"
+                android:layout_marginEnd="12dp"/>
+
+            <!-- Path -->
+            <View
+                android:layout_width="16dp"
+                android:layout_height="3dp"
+                android:background="#2196F3"
+                android:layout_marginEnd="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trajet"
+                android:textSize="11sp"
+                android:textColor="#047857"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

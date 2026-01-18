@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0FDF4"
+    tools:context=".ui.home.HomeFragment">
+
+    <!-- Header Section -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@android:drawable/ic_dialog_map"
+                    app:tint="#10B981"
+                    android:layout_marginEnd="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_home"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="My Friends"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#064E3B"/>
+
+                <Button
+                    android:id="@+id/btn_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Sync"
+                    android:textSize="12sp"
+                    app:icon="@android:drawable/stat_notify_sync"
+                    app:iconSize="16dp"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textColor="#10B981"/>
+            </LinearLayout>
+
+            <!-- Search Bar -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#6EE7B7"
+                android:layout_marginTop="12dp"
+                android:visibility="gone">
+
+                <SearchView
+                    android:id="@+id/search_view_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:queryHint="Search friends..."
+                    android:iconifiedByDefault="false"
+                    android:background="@android:color/transparent"/>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- View Toggle -->
+    <LinearLayout
+        android:id="@+id/view_toggle_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="View Mode"
+            android:textSize="14sp"
+            android:textColor="#047857"/>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggle_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:checkedButton="@id/btn_toggle_split">
+
+            <Button
+                android:id="@+id/btn_toggle_list"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="List"
+                android:textSize="11sp"
+                android:textColor="#10B981"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="#10B981"
+                app:iconTint="#10B981"
+                app:iconSize="16dp"/>
+
+            <Button
+                android:id="@+id/btn_toggle_split"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Split"
+                android:textSize="11sp"
+                android:textColor="#10B981"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="#10B981"
+                app:iconTint="#10B981"
+                app:iconSize="16dp"/>
+
+            <Button
+                android:id="@+id/btn_toggle_map"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Map"
+                android:textSize="11sp"
+                android:textColor="#10B981"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="#10B981"
+                app:iconTint="#10B981"
+                app:iconSize="16dp"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+    </LinearLayout>
+
+    <!-- Content Container with Split View -->
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- RecyclerView for List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:clipToPadding="false"/>
+
+        <!-- Divider -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#6EE7B7"/>
+
+        <!-- Map Container -->
+        <FrameLayout
+            android:id="@+id/map_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"/>
+    </LinearLayout>
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@android:drawable/ic_dialog_map"
+            android:alpha="0.3"
+            app:tint="#6EE7B7"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Friends Yet"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#047857"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add friends to start tracking their locations"
+            android:textSize="14sp"
+            android:textColor="#059669"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/btn_sync_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sync Now"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            app:icon="@android:drawable/stat_notify_sync"
+            android:backgroundTint="#10B981"/>
+    </LinearLayout>
+</LinearLayout>
